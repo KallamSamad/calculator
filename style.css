@@ -1,3 +1,6 @@
+body{
+    background-color: pink;
+}
 .buttonCont{
     display: flex;
     flex-direction: row;
@@ -40,10 +43,16 @@
     background-color: black;
 }
 
-.operator{
+.operator, .equal{
     height: 5em;
     width: 5em;
     background-color: orange;
+}
+.equal{
+    background-color: red;
+    height: 6em;
+    width: 7em;
+    border-radius: 1em;
 }
 
 .bottomCont {
@@ -66,7 +75,7 @@
 
 .textBox{
    border: 1px solid blue; 
-   border-radius: 3em;
+   border-radius: 0.5em;
    height: 2em;
    width: 25em;
    background-color: olive;
@@ -76,3 +85,10 @@
    text-align: right;
 
 }
+.numberBtns, .operator {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 1em;
+}
+
