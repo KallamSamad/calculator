@@ -1,11 +1,56 @@
 .buttonCont{
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     gap: 10px;
-    width: 500px;
+    align-items: flex-start;
+}
+
+.numberCont{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 320px;
+    background-color: black;
 
 }
 .numberBtns{
-    flex: 0 0 150px;
+    flex: 0 0 100px;
+    height: 5em;
+
+}
+
+.calc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.operatorCont{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.operator{
+    height: 5em;
+    width: 5em;
+}
+
+.bottomCont {
+    display: flex;
+    gap: 8px;
+}
+
+.bottomCont .numberBtns {
+    flex: 0 0 210px; /* spans two columns if you want */
+}
+
+.bottomCont .operator {
+    flex: 0 0 100px;
+}
+.numberWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
