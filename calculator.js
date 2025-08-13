@@ -125,3 +125,12 @@ acButton.onclick = () => {
     operator = null;
     input.innerHTML = "";
 };
+
+equalButton.onclick = () => {
+    if (a !== null && b !== null && operator !== null) {
+        a = operation(a, b, operator); // calculate result
+        b = null;                      // reset second number
+        operator = null;               // reset operator
+        input.innerHTML = a;           // display result
+    }
+};
