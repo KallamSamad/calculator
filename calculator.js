@@ -114,15 +114,17 @@ operatorButton.forEach(op => {
     };
 });
 
-equalButton.onclick = () => {
-    if (a !== null && b !== null && operator !== null) {
-        const result = operation(a, b, operator);
-        input.innerHTML = result;
-        // reset for next calculation
-        a = result;
-        b = null;
-        operator = null;
-    }
+operatorButton.forEach(op => {
+    op.onclick = () => {
+        if (b !== null) { 
+            a = operation(a, b, operator);
+            b = null;
+        }
+        operator = op.textContent;
+        input.innerHTML = a + operator;
+    };
+});
+
 };
 acButton.onclick = () => {
     a = null;
