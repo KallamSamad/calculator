@@ -8,11 +8,16 @@ const calc = document.createElement("div")
 calc.classList.add("calc")
 outer.appendChild(calc)
 
+const input = document.createElement("div")
+input.classList.add("textBox");
+calc.prepend(input);
+
+
 
 const buttonCont = document.createElement("div")
 buttonCont.classList.add("buttonCont")
 calc.appendChild(buttonCont)
-
+calc.insertBefore(input, buttonCont);
 
 const numberWrapper = document.createElement("div");
 numberWrapper.classList.add("numberWrapper");
