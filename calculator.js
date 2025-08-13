@@ -95,42 +95,57 @@ function operation(a,b,operator){
     }
 }
 
-
+let newNumber = true;  
 numberButton.forEach(btn => {
     btn.onclick = () => {
         if (operator === null) {
-            a = a === null ? Number(btn.textContent) : a * 10 + Number(btn.textContent);
-        } else {
-            b = b === null ? Number(btn.textContent) : b * 10 + Number(btn.textContent);
+       
+            if (newNumber || a === null) {
+                a = Number(btn.textContent);
+                newNumber = false;
+            } else {
+                a = a * 10 + Number(btn.textContent);
+            }
+        } else { 
+            if (newNumber || b === null) {
+                b = Number(btn.textContent);
+                newNumber = false;
+            } else {
+                b = b * 10 + Number(btn.textContent);
+            }
         }
         input.innerHTML = a + (operator || "") + (b || "");
     };
 });
-
-
+ 
 operatorButton.forEach(op => {
     op.onclick = () => {
-        if (b !== null) { 
+        if (b !== null) {
+            
             a = operation(a, b, operator);
             b = null;
         }
         operator = op.textContent;
+        newNumber = true; 
         input.innerHTML = a + operator;
     };
 });
 
+ 
 acButton.onclick = () => {
     a = null;
     b = null;
     operator = null;
     input.innerHTML = "";
+    newNumber = true;  
 };
-
+ 
 equalButton.onclick = () => {
     if (a !== null && b !== null && operator !== null) {
-        a = operation(a, b, operator); // calculate result
-        b = null;                      // reset second number
-        operator = null;               // reset operator
-        input.innerHTML = a;           // display result
+        a = operation(a, b, operator);  
+        b = null;
+        operator = null;
+        input.innerHTML = a;           
+        newNumber = true;               
     }
 };
