@@ -107,12 +107,6 @@ numberButton.forEach(btn => {
     };
 });
 
-operatorButton.forEach(op => {
-    op.onclick = () => {
-        operator = op.textContent;
-        input.innerHTML = a + operator;
-    };
-});
 
 operatorButton.forEach(op => {
     op.onclick = () => {
@@ -125,7 +119,6 @@ operatorButton.forEach(op => {
     };
 });
 
-};
 acButton.onclick = () => {
     a = null;
     b = null;
