@@ -1,4 +1,8 @@
 let operators = ["x","+","-","÷"]
+let a = null;
+let b = null;
+let operator = null;
+
 
 const outer = document.createElement("div")
 outer.classList.add("outer")
@@ -40,8 +44,13 @@ bottomCont.appendChild(zeroBtn)
 
 const equalBtn = document.createElement("button")
 equalBtn.textContent = "="
-equalBtn.classList.add("operator")
+equalBtn.classList.add("equal")
 bottomCont.appendChild(equalBtn)
+
+const acBtn = document.createElement("button");
+acBtn.textContent = "AC";
+acBtn.classList.add("ac");
+bottomCont.appendChild(acBtn);
 
 numberWrapper.appendChild(numberCont);
 numberWrapper.appendChild(bottomCont);
@@ -65,3 +74,59 @@ for (let x=0; x<4;x++){
     operator.textContent = `${operators[x]}`
     operatorCont.appendChild(operator)
 }
+const numberButton = document.querySelectorAll(".numberBtns");
+const operatorButton = document.querySelectorAll(".operator");
+const equalButton = document.querySelector(".equal");
+const acButton = document.querySelector(".ac");    
+
+
+function operation(a,b,operator){
+    if (operator==="+"){
+        return a+b
+    }
+    if (operator==="-"){
+        return a-b
+    }
+    if (operator==="÷"){
+        return a/b
+    }
+    if (operator==="x"){
+        return a*b
+    }
+}
+
+
+numberButton.forEach(btn => {
+    btn.onclick = () => {
+        if (operator === null) {
+            a = a === null ? Number(btn.textContent) : a * 10 + Number(btn.textContent);
+        } else {
+            b = b === null ? Number(btn.textContent) : b * 10 + Number(btn.textContent);
+        }
+        input.innerHTML = a + (operator || "") + (b || "");
+    };
+});
+
+operatorButton.forEach(op => {
+    op.onclick = () => {
+        operator = op.textContent;
+        input.innerHTML = a + operator;
+    };
+});
+
+equalButton.onclick = () => {
+    if (a !== null && b !== null && operator !== null) {
+        const result = operation(a, b, operator);
+        input.innerHTML = result;
+        // reset for next calculation
+        a = result;
+        b = null;
+        operator = null;
+    }
+};
+acButton.onclick = () => {
+    a = null;
+    b = null;
+    operator = null;
+    input.innerHTML = "";
+};
